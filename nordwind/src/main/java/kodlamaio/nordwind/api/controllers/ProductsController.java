@@ -14,6 +14,7 @@ import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import kodlamaio.nordwind.business.abstracts.ProductService;
 import kodlamaio.nordwind.core.utilities.results.*;
 import kodlamaio.nordwind.entities.concretes.Product;
+import kodlamaio.nordwind.entities.dtos.ProductWithCategoryDto;
 
 @RestController
 @RequestMapping("/api/products")
@@ -91,5 +92,10 @@ public class ProductsController {
 	@GetMapping("/GetAllSortedDsc")
 	public DataResult<List<Product>> getSortedDsc(){
 		return this.productService.getSortedDsc();
+	}
+	
+	@GetMapping("/getProductWithCategoryDetails")
+	public DataResult<List<ProductWithCategoryDto>> getProductWithCategoryDetails(){
+		return this.productService.getProductWithCategoryDetails();
 	}
 }

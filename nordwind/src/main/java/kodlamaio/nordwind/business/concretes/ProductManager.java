@@ -13,6 +13,7 @@ import kodlamaio.nordwind.core.utilities.results.SuccessDataResult;
 import kodlamaio.nordwind.core.utilities.results.SuccessResult;
 import kodlamaio.nordwind.dataAccess.abstracts.ProductDao;
 import kodlamaio.nordwind.entities.concretes.Product;
+import kodlamaio.nordwind.entities.dtos.ProductWithCategoryDto;
 
 @Service
 public class ProductManager implements ProductService {
@@ -96,6 +97,11 @@ public class ProductManager implements ProductService {
 	public DataResult<List<Product>> getSortedDsc() {
 		Sort sort = Sort.by(Sort.Direction.DESC,"productName");
 		return new SuccessDataResult<List<Product>>(this.productDao.findAll(sort),"Data Listelendi.");
+	}
+
+	@Override
+	public DataResult<List<ProductWithCategoryDto>> getProductWithCategoryDetails() {
+		return new SuccessDataResult<List<ProductWithCategoryDto>>(this.productDao.getProductWithCategoryDetails(),"Data Listelendi.");
 	}
 	
 
